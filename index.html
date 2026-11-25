@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090e1b">
+<title>QUANTUM PREDATOR AI</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#080d18;--panel:#111a2b;--line:#23314a;--muted:#8da0bd;--cyan:#42d7f5;--green:#20d69a;--red:#ff5e78}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#14294a 0,transparent 38%),var(--bg);color:#eef5ff;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.wrap{max-width:520px;margin:auto;padding:18px 15px 34px}.top{display:flex;justify-content:space-between;align-items:center;margin:8px 0 22px}
+.brand{font-weight:850;letter-spacing:.8px;font-size:19px}.brand span{color:var(--cyan)}.badge{font-size:11px;color:var(--green);border:1px solid #1e755f;padding:6px 9px;border-radius:20px}
+.hero{background:linear-gradient(135deg,#142a48,#111a2b 65%);border:1px solid #29415f;border-radius:22px;padding:20px;margin-bottom:15px;box-shadow:0 14px 40px #0005}
+.eyebrow{color:var(--cyan);font-size:12px;font-weight:700}.hero h1{font-size:25px;margin:9px 0}.hero p{color:#a9bad2;margin:0;font-size:13px;line-height:1.8}
+.card{background:#101a2a;border:1px solid var(--line);border-radius:18px;padding:16px;margin:13px 0}
+.label{color:var(--muted);font-size:12px;margin-bottom:10px}.tabs,.times{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+button,select{font:inherit}button{border:1px solid #2b3c57;background:#17243a;color:#dceaff;border-radius:12px;padding:12px;font-weight:750}
+button.active{background:linear-gradient(135deg,#0b9dc2,#2867c9);border-color:#47d9f2;color:white}
+.times{grid-template-columns:repeat(4,1fr)}.times button{padding:10px 4px;font-size:13px}
+.action{width:100%;background:linear-gradient(90deg,#04a9c7,#2867d5);border:0;margin-top:14px;padding:15px;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:#0b1423;border:1px solid #1e2d44;border-radius:13px;padding:12px 8px;text-align:center}.stat b{display:block;font-size:18px}.stat small{color:var(--muted);font-size:11px}
+.notice{color:#b8c8df;font-size:12px;line-height:1.8}.signal{display:none;text-align:center;padding:18px}.signal strong{font-size:27px;color:var(--cyan)}.foot{text-align:center;color:#647792;font-size:11px;margin-top:22px}
+</style></head>
+<body><main class="wrap">
+<header class="top"><div class="brand">♟ QUANTUM <span>PREDATOR AI</span></div><div class="badge">● ONLINE UI</div></header>
+<section class="hero"><div class="eyebrow">SMART TRADING INTERFACE</div><h1>لوحة التداول الذكية</h1><p>اختر السوق والإطار الزمني لعرض لوحة الإشارات. ربط بيانات السوق ومحرك التحليل غير مفعّلَين بعد.</p></section>
+<section class="card"><div class="label">اختر السوق</div><div class="tabs"><button class="active" id="otc" onclick="market('otc')">OTC</button><button id="forex" onclick="market('forex')">FOREX</button></div></section>
+<section class="card"><div class="label">زوج التداول</div><select id="pair" style="width:100%;padding:13px;border-radius:12px;background:#0b1423;color:#eef5ff;border:1px solid #2b3c57"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>BTC/USD</option></select></section>
+<section class="card"><div class="label">الإطار الزمني</div><div class="times"><button class="active" onclick="tf(this)">1 دقيقة</button><button onclick="tf(this)">5 دقائق</button><button onclick="tf(this)">15 دقيقة</button><button onclick="tf(this)">1 ساعة</button></div><button class="action" onclick="scan()">تحليل السوق</button><div class="signal" id="signal"><strong>—</strong><p class="notice">لا توجد إشارة حقيقية: لم يتم ربط مصدر بيانات.</p></div></section>
+<section class="card"><div class="label">إحصائيات المحرك</div><div class="stats"><div class="stat"><b>—</b><small>الدقة</small></div><div class="stat"><b>0</b><small>إشارات</small></div><div class="stat"><b>—</b><small>الحالة</small></div></div></section>
+<section class="card"><div class="label">حالة الاتصال</div><p class="notice">واجهة Mini App جاهزة للعرض التجريبي فقط. لا تستخدمها لاتخاذ قرارات تداول قبل ربط مزود بيانات موثوق واختبار الاستراتيجية.</p></section>
+<div class="foot">QUANTUM PREDATOR AI · DEMO BUILD</div></main>
+<script>
+const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand()}
+function market(m){document.getElementById('otc').classList.toggle('active',m==='otc');document.getElementById('forex').classList.toggle('active',m==='forex');document.getElementById('pair').innerHTML=(m==='otc'?['EUR/USD OTC','GBP/USD OTC','USD/JPY OTC','AUD/CAD OTC']:['EUR/USD','GBP/USD','USD/JPY','BTC/USD']).map(x=>`<option>${x}</option>`).join('')}
+function tf(b){document.querySelectorAll('.times button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+function scan(){document.getElementById('signal').style.display='block'}
+</script></body></html>
